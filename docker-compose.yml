@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  deploy-test:
+    container_name: deploy-test
+    build: .
+    port:
+      - 6969
+    restart: always
+
+  proxy:
+    build: nginx/
+    port:
+      - "80:80"
+    depends_on:
+      - deploy-test
+    restart: always
