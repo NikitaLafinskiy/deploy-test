@@ -4,13 +4,13 @@ services:
   deploy-test:
     container_name: deploy-test
     build: .
-    port:
+    ports:
       - 6969
     restart: always
 
   proxy:
     build: nginx/
-    port:
+    ports:
       - "80:80"
     depends_on:
       - deploy-test
